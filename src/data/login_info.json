@@ -1,0 +1,60 @@
+{
+  "e_login": [
+    {
+      "id": "12345",
+      "name": "Alex",
+      "password": "helo_world",
+      "Gender": "M"
+    },
+    {
+      "id": "32612",
+      "name": "Maria",
+      "password": "qwerty",
+      "Gender": "F"
+    },
+    {
+      "id": "77123",
+      "name": "Beanie",
+      "password": "Bluewonk",
+      "Gender": "F"
+    },
+    {
+      "id": "54321",
+      "name": "Stephen",
+      "password": "qwerty",
+      "Gender": "M"
+    },
+    {
+      "id": "42123",
+      "name": "Manoj",
+      "password": "Fbisix",
+      "Gender": "M"
+    },
+    {
+      "id": "32613",
+      "name": "Chandu",
+      "password": "Dubaii",
+      "Gender": "M"
+    }
+  ],
+  "mlogin": [
+    {
+      "id": "68955",
+      "name": "Mocha",
+      "password": "Milkily",
+      "Gender": "M"
+    },
+    {
+      "id": "98774",
+      "name": "Milk",
+      "password": "ILYmocha",
+      "Gender": "F"
+    },
+    {
+      "id": "12098",
+      "name": "Matcha",
+      "password": "ILYmilkmocha",
+      "Gender": "M"
+    }
+  ]
+}

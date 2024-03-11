@@ -1,0 +1,33 @@
+{
+  "e_tag": [
+    {
+      "id": "23451",
+      "tag": "manager"
+    },
+    {
+      "id": "12345",
+      "tag": "employee"
+    },
+    {
+      "id": "77777",
+      "tag": "employee"
+    }
+  ],
+  "elogin": [
+    {
+      "id": "23451",
+      "name": "alex",
+      "password": "qwertyayyo"
+    },
+    {
+      "id": "12345",
+      "name": "frank",
+      "password": "qwertyrio"
+    },
+    {
+      "id": "77777",
+      "name": "Beanie",
+      "password": "Bluewonk"
+    }
+  ]
+}
