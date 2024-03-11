@@ -1,5 +1,6 @@
 import React from "react";
-import UserState from "./statefunction";
+import UserState from "./Statefunction";
+import { Link } from "react-router-dom";
 console.log("hello");
 function SignUp() {
   const [state, setState] = React.useState({
@@ -33,17 +34,6 @@ function SignUp() {
     <div className="form-container sign-up-container">
       <form onSubmit={handleOnSubmit}>
         <h1>Create Account</h1>
-        {/* <div className="social-container">b
-          <a href="#" className="social">
-            <i className="fab fa-facebook-f" />
-          </a>
-          <a href="#" className="social">
-            <i className="fab fa-google-plus-g" />
-          </a>
-          <a href="#" className="social">
-            <i className="fab fa-linkedin-in" />
-          </a>
-        </div> */}
         <span>or use your email for registration</span>
         <input
           type="text"
@@ -68,6 +58,7 @@ function SignUp() {
         />
         <button>Sign Up</button>
       </form>
+      <Link to = "/Signin">SignIn</Link>
     </div>
   );
 }

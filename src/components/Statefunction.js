@@ -1,5 +1,5 @@
 import React from "react";
-import contextObject from "./letsContext.js";
+import contextObject from "../letsContext.js";
 import { useContext } from "react";
 
 function UserState() {

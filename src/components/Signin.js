@@ -1,25 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Verify from "./veryify";
 import { useContext } from "react";
-import UserState from "./statefunction";
-import contextObject from "./letsContext";
+import contextObject from "../letsContext";
+import { Link } from "react-router-dom";
 
-import UserStatus from "./verification";
-function SignIn({ verify, usersData }) {
-  const [formData, setFormData] = React.useState({
+function SignIn({ verify }) {
+  const [usersData, setUsersData] = useState([]);
+
+  useEffect(() => {
+    // Fetch user data from the server
+    fetch("http://localhost:3000/elogin")
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log(data);
+        setUsersData(data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
+  }, []);
+
+  const [formData, setFormData] = useState({
     userID: "",
     password: "",
   });
-  const stateOfUser = false;
-  const { userID, password } = formData;
   const userAuth = useContext(contextObject);
-  const testAns = userAuth.map((ans) => {
-    // console.log("in singinnnnnn these are ID's", ans.id);
-    // console.log("these are tags", ans.tag);
-  });
   const handleChange = (evt) => {
     const { name, value } = evt.target;
-    // console.log(evt);
     setFormData({
       ...formData,
       [name]: value,
@@ -29,10 +37,10 @@ function SignIn({ verify, usersData }) {
   const HandleSubmit = (evt) => {
     evt.preventDefault();
 
-    const answer_2 = Verify(userID, password, usersData);
+    const answer_2 = Verify(formData.userID, formData.password, usersData);
     if (answer_2) {
       console.log("user is valid");
-      alert(`welcome ${userID}`);
+      alert(`welcome ${formData.userID}`);
     } else {
       console.log("userisinvalid");
     }
@@ -62,7 +70,11 @@ function SignIn({ verify, usersData }) {
           onChange={handleChange}
           placeholder="Password"
         />
-        <button type="submit">Sign Up</button>
+        <Link to="/managerDashboard" onClick={HandleSubmit}>
+          Sign In
+        </Link>
+        <Link to="/forgotPsd">Forgot Password</Link>
+        <Link to="/SignUp">Sign Up</Link>
       </form>
     </div>
   );
