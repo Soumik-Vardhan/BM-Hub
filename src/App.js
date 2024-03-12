@@ -1,7 +1,7 @@
 import "./App.css";
 import SignUp from "./components/Signup";
 import SignIn from "./components/Signin";
-import { OurContextProvider } from "./letsContext";
+import { ManagerProvider } from "./managerContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ContactUs from "./components/ContactUs";
 import Navbar from "./components/Navbar";
@@ -14,7 +14,7 @@ import ForgotPsd from "./components/ForgotPsd";
 
 function App() {
   return (
-    <OurContextProvider>
+    <ManagerProvider>
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -33,7 +33,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
-    </OurContextProvider>
+    </ManagerProvider>
 
     // // <OurContextProvider>
     // //   <UserStatus />
