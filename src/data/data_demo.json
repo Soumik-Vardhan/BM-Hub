@@ -29,5 +29,31 @@
       "name": "Beanie",
       "password": "Bluewonk"
     }
+  ],
+  "e_details": [
+    {
+      "id": "77777",
+      "name": "Beanie",
+      "techStack": ["React JS,Python,Javascript"],
+      "exp": 2,
+      "upvotes": 5,
+      "InterviewsGiven": 5
+    },
+    {
+      "id": "12345",
+      "name": "Frank",
+      "techStack": ["Java", "Springboot,Mysql"],
+      "exp": 8,
+      "upvotes": 2,
+      "InterviewsGiven": 4
+    }
+  ],
+  "m_details": [
+    {
+      "id": "23451",
+      "name": "alex",
+      "project": "Venus Bank",
+      "requiredTech": ["React"]
+    }
   ]
 }

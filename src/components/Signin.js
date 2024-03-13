@@ -87,7 +87,13 @@ function SignIn({ verify }) {
 
   return (
     <div>
-      {signInFlag ? null : (
+      {signInFlag ? (
+        isManager ? (
+          <ManagerDashBoard />
+        ) : (
+          <EmpDashBoard />
+        )
+      ) : (
         <div className="form-container sign-up-container">
           <form onSubmit={HandleSubmit}>
             <h1>Create Account</h1>
@@ -112,13 +118,6 @@ function SignIn({ verify }) {
             <Link to="/forgotPsd">Forgot Password</Link>
             <Link to="/SignUp">Sign Up</Link>
             <Link to="/explore">explore</Link>
-            {signInFlag ? (
-              isManager ? (
-                <ManagerDashBoard />
-              ) : (
-                <EmpDashBoard />
-              )
-            ) : null}
             {/* {signInFlag && retest && <ManagerDashBoard />} */}
           </form>
         </div>
