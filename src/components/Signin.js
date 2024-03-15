@@ -7,12 +7,15 @@ import { OurAnswer } from "../managerContext";
 import { Link } from "react-router-dom";
 import ManagerDashBoard from "./ManagerDashBoard";
 import EmpDashBoard from "./EmpDashBoard";
+
 function SignIn({ verify }) {
   const [usersData, setUsersData] = useState([]);
   const [usersTaggedData, setUsersTaggedData] = useState([]);
+
   const { isManager, setIsManager } = OurAnswer();
+  const { userIdContext, setUserIdContext } = OurAnswer();
   const [signInFlag, setSignInFlag] = useState(false);
-  const [retest, setReTest] = useState(true);
+  // const [retest, setReTest] = useState(true);
   useEffect(() => {
     // Fetching the data weter user is manager or employee user data from the server
     fetch("http://localhost:3000/e_tag")
@@ -72,12 +75,13 @@ function SignIn({ verify }) {
     const user = usersTaggedData.find((user) => user.id === formData.userID);
     // const isManager = user ? user.tag : "sorry ID not found";
     if (user) {
+      setUserIdContext(formData.userID);
       if (user.tag == "manager") {
         setIsManager(true);
       }
     }
 
-    console.log("is userisManager", isUserAManager);
+    console.log("is userisManager", isManager);
 
     setFormData({
       userID: "",

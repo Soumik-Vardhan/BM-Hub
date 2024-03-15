@@ -4,6 +4,8 @@ import { OurAnswer } from "../managerContext";
 
 function Explore() {
   let { isManager } = OurAnswer();
+  let { userIdfromContext } = OurAnswer();
+  console.log(userIdfromContext);
   console.log("we r in explore and printn the state of user", { isManager });
   if (isManager) {
     console.log("yay");

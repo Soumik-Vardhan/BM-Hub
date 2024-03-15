@@ -5,8 +5,16 @@ export let OurAnswer = () => useContext(ManagerContextObject);
 
 export const ManagerProvider = ({ children }) => {
   let [isManager, setIsManager] = useState(false);
+  const [userIdContext,setUserIdContext] = useState("");
   return (
-    <ManagerContextObject.Provider value={{ isManager, setIsManager }}>
+    <ManagerContextObject.Provider
+      value={{
+        isManager,
+        setIsManager,
+        userIdContext,
+        setUserIdContext
+      }}
+    >
       {children}
     </ManagerContextObject.Provider>
   );

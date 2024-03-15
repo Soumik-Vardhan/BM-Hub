@@ -11,30 +11,57 @@
     {
       "id": "77777",
       "tag": "employee"
+    },
+    {
+      "id": "67584",
+      "tag": "manager"
+    },
+    {
+      "id": "37869",
+      "tag": "manager"
+    },
+    {
+      "id": "45678",
+      "tag": "employee"
     }
   ],
   "elogin": [
     {
       "id": "23451",
-      "name": "alex",
+      "name": "Alex",
       "password": "qwertyayyo"
     },
     {
       "id": "12345",
-      "name": "frank",
+      "name": "Frank",
       "password": "qwertyrio"
     },
     {
       "id": "77777",
       "name": "Beanie",
       "password": "Bluewonk"
+    },
+    {
+      "id": "67584",
+      "name": "Stephen",
+      "password": "12345"
+    },
+    {
+      "id": "37869",
+      "name": "Benjamin",
+      "password": "pillowtalk"
+    },
+    {
+      "id": "45678",
+      "name": "Kyle",
+      "password": "kylems"
     }
   ],
   "e_details": [
     {
       "id": "77777",
       "name": "Beanie",
-      "techStack": ["React JS,Python,Javascript"],
+      "techStack": ["React JS", "Python", "Javascript"],
       "exp": 2,
       "upvotes": 5,
       "InterviewsGiven": 5
@@ -42,10 +69,18 @@
     {
       "id": "12345",
       "name": "Frank",
-      "techStack": ["Java", "Springboot,Mysql"],
+      "techStack": ["Java", "Springboot", "Mysql"],
       "exp": 8,
       "upvotes": 2,
       "InterviewsGiven": 4
+    },
+    {
+      "id": "45678",
+      "name": "Kyle",
+      "techStack": [],
+      "exp": 5,
+      "upvotes": 3,
+      "InterviewsGiven": 3
     }
   ],
   "m_details": [
@@ -53,7 +88,31 @@
       "id": "23451",
       "name": "alex",
       "project": "Venus Bank",
-      "requiredTech": ["React"]
+      "requiredTech": ["React JS"]
+    },
+    {
+      "id": "67584",
+      "name": "Stephen",
+      "project": "Jupyter Services",
+      "requiredTech": ["Java Fullstack"]
+    },
+    {
+      "id": "37869",
+      "name": "Benjamin",
+      "project": "Thumps UP Co",
+      "requiredTech": ["Selenuim Automation"]
+    },
+    {
+      "id": "45678",
+      "name": "Kyle",
+      "project": "Kingfisher",
+      "requiredTech": ["Python"]
+    },
+    {
+      "id": "45681",
+      "name": "Ron",
+      "project": "RBI",
+      "requiredTech": ["React JS"]
     }
   ]
 }
