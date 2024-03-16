@@ -23,6 +23,10 @@
     {
       "id": "45678",
       "tag": "employee"
+    },
+    {
+      "id": "45681",
+      "tag": "manager"
     }
   ],
   "elogin": [
@@ -55,6 +59,11 @@
       "id": "45678",
       "name": "Kyle",
       "password": "kylems"
+    },
+    {
+      "id": "45681",
+      "name": "Ron",
+      "password": "hailhydra"
     }
   ],
   "e_details": [

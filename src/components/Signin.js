@@ -81,8 +81,6 @@ function SignIn({ verify }) {
       }
     }
 
-    console.log("is userisManager", isManager);
-
     setFormData({
       userID: "",
       password: "",

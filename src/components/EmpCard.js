@@ -33,6 +33,7 @@ export default function EmpCard() {
   }, []);
 
   const index = empDetails.findIndex((emp) => emp.id === userIdContext);
+  console.log(index);
   // empDetails.map((emp) => {
   //   if (emp.id == userIdContext) {
   //     // console.log(emp.techStack);
@@ -57,35 +58,18 @@ export default function EmpCard() {
   });
 
   return (
-    // <>ho
-    // {emptyFlag ? (
-    //   <EmpupdateStack/>
-    // ) : (
-    //   <>oh no</>
-    // )}
-    // </>
     <>
       {emptyFlag ? (
         <EmpupdateStack />
       ) : (
         <>
           <div>we r in EmpCard and here are some projects for your career</div>
-          {/* //lets create an data structre first
-      {projectDetails.map((project, index) => (
-        // <h2>{project.project}</h2>
-        <li key={index}>{project.project}</li>
-      ))} */}
-          {matchingIds.map((match) =>
-            projectDetails.map((pro) => {
-              if (pro.id === match) {
-                return (
-                  <li key={pro.id}>
-                    manager is {pro.name} and name of project is {pro.project}
-                  </li>
-                );
-              }
-            })
-          )}
+          {matchingIds.map((match) => {
+            const work = projectDetails.find((work) => work.id == match);
+            if (work) {
+              return <li key={work.id}>manager is {work.name} and project is {work.name}</li>;
+            }
+          })}
         </>
       )}
     </>
