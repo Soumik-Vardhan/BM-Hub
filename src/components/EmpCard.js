@@ -67,7 +67,14 @@ export default function EmpCard() {
           {matchingIds.map((match) => {
             const work = projectDetails.find((work) => work.id == match);
             if (work) {
-              return <li key={work.id}>manager is {work.name} and project is {work.name}</li>;
+              return (
+                <>
+                  <div className="card-container">
+                    <div className="card-id"> {work.id} </div>
+                    <div className="card-name">{work.name}</div>
+                  </div>
+                </>
+              );
             }
           })}
         </>

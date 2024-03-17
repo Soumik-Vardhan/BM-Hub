@@ -29,7 +29,7 @@ function SignIn({ verify }) {
       });
   }, []);
   // console.log("I am users taged data ", usersTaggedData);
-
+  console.log(userIdContext);
   useEffect(() => {
     // Fetch user data which is password or username of the user from the server
     fetch("http://localhost:3000/elogin")
