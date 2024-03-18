@@ -119,7 +119,6 @@ function SignIn({ verify }) {
             </Link>
             <Link to="/forgotPsd">Forgot Password</Link>
             <Link to="/SignUp">Sign Up</Link>
-            <Link to="/explore">explore</Link>
             {/* {signInFlag && retest && <ManagerDashBoard />} */}
           </form>
         </div>

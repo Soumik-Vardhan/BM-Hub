@@ -123,5 +123,18 @@
       "project": "RBI",
       "requiredTech": ["React JS"]
     }
+    ,
+    {
+      "id":"89891",
+      "name":"Adam",
+      "project":"Bank of America",
+      "requiredTech":["Angular JS"]
+    },
+    {
+      "id":"65651",
+      "name":"Eve",
+      "project":"Ethiad Airways",
+      "requiredTech":["Java Fullstack"]
+    }
   ]
 }

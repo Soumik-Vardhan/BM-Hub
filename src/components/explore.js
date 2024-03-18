@@ -102,7 +102,7 @@ function Explore() {
               />
               <button onClick={handleClickSearch}>Search</button>
             </div>
-            <RandomCard />
+            <RandomCard ourProp={projectDetails} />
           </>
         )}
       </div>
