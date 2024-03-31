@@ -11,7 +11,7 @@ import EmpDashBoard from "./components/EmpDashBoard";
 import ManagerDashBoard from "./components/ManagerDashBoard";
 import Footer from "./components/Footer";
 import ForgotPsd from "./components/ForgotPsd";
-
+import Mexplore from "./components/Mexplore";
 function App() {
   return (
     <ManagerProvider>
@@ -23,6 +23,7 @@ function App() {
           <Route path="contactUs" element={<ContactUs />} />
           <Route path="profile" element={<Profile />} />
           <Route path="explore" element={<Explore />} />
+          <Route path="mexplore" element={<Mexplore/>}/>
           <Route path="employeeDashboard" element={<EmpDashBoard />} />
           <Route path="/managerDashboard" element={<ManagerDashBoard />} />
           <Route path="navBar" element={<Navbar />} />

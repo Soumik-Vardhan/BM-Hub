@@ -70,6 +70,8 @@
     {
       "id": "77777",
       "name": "Beanie",
+      "job_description": "",
+
       "techStack": ["React JS", "Python", "Javascript"],
       "exp": 2,
       "upvotes": 5,
@@ -97,44 +99,48 @@
       "id": "23451",
       "name": "alex",
       "project": "Venus Bank",
-      "requiredTech": ["React JS"]
+      "requiredTech": ["React JS"],
+      "Description": "Venus Bank is one of the famous Bank in India which is one of the leading accounts in TCS"
     },
     {
       "id": "67584",
       "name": "Stephen",
       "project": "Jupyter Services",
-      "requiredTech": ["Java Fullstack"]
+      "requiredTech": ["Java Fullstack"],
+      "Description": "Jupyter Provides the end to end services to the client accross the globe"
     },
     {
       "id": "37869",
       "name": "Benjamin",
       "project": "Thumps UP Co",
-      "requiredTech": ["Selenuim Automation"]
+      "requiredTech": ["Selenuim Automation"],
+      "Description": "one of the most anted beverage in the whole planet"
     },
     {
       "id": "45678",
       "name": "Kyle",
       "project": "Kingfisher",
-      "requiredTech": ["Python"]
+      "requiredTech": ["Python"],
+      "Description": "Leading Airplane company and manufacterer,sponser to the best IPL team"
     },
     {
       "id": "45681",
       "name": "Ron",
       "project": "RBI",
-      "requiredTech": ["React JS"]
-    }
-    ,
-    {
-      "id":"89891",
-      "name":"Adam",
-      "project":"Bank of America",
-      "requiredTech":["Angular JS"]
+      "requiredTech": ["React JS"],
+      "Description": "The prestigous account of the TCS which directly provides technical support to the Reserve Bank of India"
     },
     {
-      "id":"65651",
-      "name":"Eve",
-      "project":"Ethiad Airways",
-      "requiredTech":["Java Fullstack"]
+      "id": "89891",
+      "name": "Adam",
+      "project": "Bank of America",
+      "requiredTech": ["Angular JS"]
+    },
+    {
+      "id": "65651",
+      "name": "Eve",
+      "project": "Ethiad Airways",
+      "requiredTech": ["Java Fullstack"]
     }
   ]
 }

@@ -36,3 +36,42 @@
     transform: rotate(360deg);
   }
 }
+
+.card-component {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+
+.card {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+.card img {
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+}
+
+
+.card-content {
+  padding: 20px;
+}
+
+
+.card h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+
+.card p {
+  margin: 10px 0;
+  font-size: 16px;
+}

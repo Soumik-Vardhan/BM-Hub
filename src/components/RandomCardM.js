@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function RandomCard(props) {
+export default function RandomCardM(props) {
   const { ourProp } = props;
   const ourLen = ourProp.length - 1;
   const ourMax = ourLen + 1;
@@ -39,14 +39,17 @@ export default function RandomCard(props) {
   console.log(ans);
   return (
     <>
+      <div>RandomCardM this is a random card of manager </div>
+
       <div className="card-component">
         {ans.map((our, index) => (
           <div className="card" key={index}>
             <div className="card-content">
-              <h2>Project: {our.projectName}</h2>
-              <p>Manager: {our.nameOfManager}</p>
+              <h2>Name: {our.name}</h2>
+              <p>Upvotes: {our.upVotes}</p>
+              <p>TechStack:{our.techStack.join(", ")}</p>
               {/* <button onClick={handleUpVote}>Upvote</button> it is just demo we need this feature perfect on employee cards */}
-              <p>Required Skill:{our.requiredStack.join(", ")}</p>
+              {/* <p>Required Skill:{our.requiredStack.join(", ")}</p> */}
             </div>
           </div>
           // <div className="card" key={index}>
@@ -54,53 +57,5 @@ export default function RandomCard(props) {
         ))}
       </div>
     </>
-
-    // <div>
-    //   <h3>Random Card</h3>
-    //   {ans.map((our) => (
-    //     <div>
-    //       <h1 id={our.id}>
-    //         project is {our.project} and manager is {our.name}
-    //       </h1>
-    //     </div>
-    //   ))}
-    // </div>
   );
-
-  {
-    /*
-  <>
-    <div className = "card-component">
-    {data.map((dat,index)=>(
-      <div className="card" key={index}>
-      <div className = "card-content">
-      <h2> {dat.name} </h2>
-      <p>Experience: {dat.exp}  </p>
-      <div className="Upvote">
-            <button onClick={console.log("upvote clicked ")}>Remove</button>
-      </div>
-      <p>{dat.upvotes}</p>
-      <p>Tech Stack: {dat.techStack.join(',')}</p>
-      </div>
-      
-      </div>
-    ))}
-    
-    
-    </div>
-    
-    </> 
- */
-  }
-
-  // return (
-  //   <div>
-  //     <h3>Random Card</h3>
-  //     {ans.map((our) => (
-  //       <div key={our.id}>
-  //         <h1>{our.project}here</h1>
-  //       </div>
-  //     ))}
-  //   </div>
-  // );
 }

@@ -63,20 +63,56 @@ export default function EmpCard() {
         <EmpupdateStack />
       ) : (
         <>
+          {/*
+        <div className="card-component">
+        {ans.map((our, index) => (
+          <div className="card" key={index}>
+            <div className="card-content">
+              <h2>Project: {our.project}</h2>
+              <p>Manager: {our.name}</p>
+              <p>Required Skill:{our.requiredTech.join(", ")}</p>
+            </div>
+          </div>
+          // <div className="card" key={index}>
+          // <div className = "card-content">
+        ))}
+      </div> 
+      */}
           <div>we r in EmpCard and here are some projects for your career</div>
-          {matchingIds.map((match) => {
+
+          <div className="card-component">
+            {matchingIds.map((match, index) => {
+              const work = projectDetails.find((work) => work.id == match);
+              if (work) {
+                return (
+                  <>
+                    <div className="card" key={index}>
+                      <div className="card-content">
+                        <h2>Project: {work.project}</h2>
+                        <p>Manager: {work.name}</p>
+                        <p>Required Tech: {work.requiredTech.join(",")}</p>
+                      </div>
+                    </div>
+                  </>
+                );
+              }
+            })}
+          </div>
+
+          {/* {matchingIds.map((match) => {
             const work = projectDetails.find((work) => work.id == match);
             if (work) {
               return (
                 <>
                   <div className="card-container">
-                    <div className="card-id"> {work.id} </div>
-                    <div className="card-name">{work.name}</div>
+                    <h2>Project: {work.project} </h2>
+                    <p>{work.name}</p>
+                    <p>{work.requiredTech}</p>
                   </div>
                 </>
               );
             }
-          })}
+          })} */}
         </>
       )}
     </>

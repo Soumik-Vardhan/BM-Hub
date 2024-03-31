@@ -1,12 +1,10 @@
 import React from "react";
-import ManagerContextObject from "../managerContext";
+import RandomCardM from "./RandomCardM";
 import { OurAnswer } from "../managerContext";
 import { useState, useEffect } from "react";
-import DisplayData from "./DisplayData";
-import RandomCard from "./RandomCard";
-import RandomCardM from "./RandomCardM";
+import DisplayDataM from "./DisplayDataM";
 
-function Explore() {
+export default function Mexplore() {
   const [my_list, setMy_List] = useState([]);
   const { isManager } = OurAnswer();
   const { userIdContext } = OurAnswer();
@@ -15,8 +13,7 @@ function Explore() {
   const [searchText, setSearchText] = useState();
   const [projectDetails, setprojectDetails] = useState([]);
   const [empDetails, setEmpDetails] = useState([]);
-  console.log("in exlore", isManager);
-
+  console.log("in Mexlore", isManager);
   useEffect(() => {
     // Fetching the data weter user is manager or employee user data from the server
     fetch("http://localhost:3000/getEmps") //employee details
@@ -43,31 +40,6 @@ function Explore() {
       });
   }, []);
 
-  // useEffect(() => {
-  //   // Fetching the data weter user is manager or employee user data from the server
-  //   fetch("http://localhost:3000/e_details")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setEmpDetails(data);
-  //       console.log(data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching user data:", error);
-  //     });
-  // }, []);
-
-  // useEffect(() => {
-  //   // Fetching the data weter user is manager or employee user data from the server
-  //   fetch("http://localhost:3000/m_details")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setprojectDetails(data);
-  //       console.log(data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching user data:", error);
-  //     });
-  // }, []);
   const handleChange = (evt) => {
     const { value } = evt.target;
     setSearchData(value);
@@ -76,7 +48,7 @@ function Explore() {
   useEffect(() => {
     if (searching) {
       const newList = [];
-      projectDetails.forEach((pro) => {
+      empDetails.forEach((pro) => {
         console.log("each Pro is", pro);
         if (
           Object.values(pro).some((value) => {
@@ -100,7 +72,7 @@ function Explore() {
   const handleClickSearch = () => {
     setSearching(true);
 
-    projectDetails.forEach((pro) => {
+    empDetails.forEach((pro) => {
       console.log("for each pro", pro);
       if (
         Object.values(pro).some((value) => {
@@ -121,10 +93,10 @@ function Explore() {
 
   return (
     <>
-      <h1>we r in explore</h1>
+      <h1>we r in Mexplore</h1>
       <div>
         {searching ? (
-          <DisplayData prop1={projectDetails} prop2={my_list} />
+          <DisplayDataM prop1={empDetails} prop2={my_list} />
         ) : (
           <>
             <div className="search-bar">
@@ -137,18 +109,14 @@ function Explore() {
               />
               <button onClick={handleClickSearch}>Search</button>
             </div>
-            {/* make the necessary changes here like if user is manager then random employees should be displayed, if the user is employee then random mangers should be dispalyed  */}
-
-            <>
-              {console.log(isManager)}
-              <RandomCard ourProp={projectDetails} />
-            </>
+            {/* Render RandomCardM only if user is a manager */}
+            {isManager && <RandomCardM ourProp={empDetails} />}
           </>
         )}
       </div>
     </>
+    // <div> we r in Mexplore</div>
   );
-  //here we need to types of data one is to display random data when the user yet to start the searching process and the other is the data with the details which user is searched
 }
 
-export default Explore;
+//////////////////////////jhi

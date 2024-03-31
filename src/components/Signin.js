@@ -10,37 +10,22 @@ import EmpDashBoard from "./EmpDashBoard";
 
 function SignIn({ verify }) {
   const [usersData, setUsersData] = useState([]);
+  const [userCreds, setUserCreds] = useState([]);
   const [usersTaggedData, setUsersTaggedData] = useState([]);
+  const { isManager, setIsManager, userIdContext, setUserIdContext } =
+    OurAnswer();
 
-  const { isManager, setIsManager } = OurAnswer();
-  const { userIdContext, setUserIdContext } = OurAnswer();
+  // let { isManager, setIsManager } = OurAnswer(); //false
+  // let { userIdContext, setUserIdContext } = OurAnswer(); //empty
   const [signInFlag, setSignInFlag] = useState(false);
-  // const [retest, setReTest] = useState(true);
+  const [retest, setReTest] = useState(true);
+  console.log("before clicking", isManager);
   useEffect(() => {
-    // Fetching the data weter user is manager or employee user data from the server
-    fetch("http://localhost:3000/e_tag")
+    fetch("http://localhost:3000/getCred")
       .then((response) => response.json())
       .then((data) => {
-        setUsersTaggedData(data);
+        setUserCreds(data);
         console.log(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching user data:", error);
-      });
-  }, []);
-  // console.log("I am users taged data ", usersTaggedData);
-  console.log(userIdContext);
-  useEffect(() => {
-    // Fetch user data which is password or username of the user from the server
-    fetch("http://localhost:3000/elogin")
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log(data);
-        setUsersData(data);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching user data:", error);
       });
   }, []);
 
@@ -50,18 +35,18 @@ function SignIn({ verify }) {
   });
   // const userAuth = useContext(contextObject);
   let isUserAManager = useContext(ManagerContextObject); //here intial value which is false will be loaded from ManagerContext
-  const handleChange = (evt) => {
-    const { name, value } = evt.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  // const handleChange = (evt) => {
+  //   const { name, value } = evt.target;
+  //   setFormData({
+  //     ...formData,
+  //     [name]: value,
+  //   });
+  // };
 
   const HandleSubmit = (evt) => {
     evt.preventDefault();
 
-    const answer_2 = Verify(formData.userID, formData.password, usersData);
+    const answer_2 = Verify(formData.userID, formData.password, userCreds);
     if (answer_2) {
       setSignInFlag(true);
 
@@ -72,18 +57,58 @@ function SignIn({ verify }) {
     }
     let isUserAManager = false;
 
-    const user = usersTaggedData.find((user) => user.id === formData.userID);
-    // const isManager = user ? user.tag : "sorry ID not found";
-    if (user) {
-      setUserIdContext(formData.userID);
-      if (user.tag == "manager") {
-        setIsManager(true);
+    // const userm = userCreds.find((user) => user.id === formData.userID);
+    userCreds.map((user) => {
+      console.log(
+        "user.id is ",
+        user.id,
+        "formDataId is",
+        formData.userID,
+        "and his respective usertag",
+        user.tag,
+        "default is manger?",
+        isManager
+      );
+    });
+    userCreds.forEach((user) => {
+      if (user.id === formData.userID) {
+        console.log(
+          "inside first loop and original value",
+          userIdContext,
+          user.tag
+        );
+        setUserIdContext(formData.userID);
+        console.log("after update", userIdContext);
+        if (user.tag) {
+          console.log("printing usertag", user.tag);
+          console.log("inside second loop defaul ismanger", isManager);
+          setIsManager(true);
+          console.log("afrer update", isManager);
+        } else {
+          setIsManager(false);
+        }
       }
+    });
+
+    console.log(userIdContext);
+    let dummy = true;
+    if (dummy) {
+      console.log("dummy true");
     }
+
+    console.log("userId context", userIdContext);
+    console.log("is mager in signin", isManager);
 
     setFormData({
       userID: "",
       password: "",
+    });
+  };
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    setFormData({
+      ...formData,
+      [name]: value,
     });
   };
 
