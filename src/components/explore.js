@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import DisplayData from "./DisplayData";
 import RandomCard from "./RandomCard";
 import RandomCardM from "./RandomCardM";
+import "../styles/ManagerDashBoard.css";
+import { Form, Card } from "react-bootstrap";
 
 function Explore() {
   const [my_list, setMy_List] = useState([]);
@@ -68,10 +70,26 @@ function Explore() {
   //       console.error("Error fetching user data:", error);
   //     });
   // }, []);
+
+  // Bhavana's search logic
+  const [searchTerm, setSearchTerm] = useState("");
+  // Bhavana's search logic
+
   const handleChange = (evt) => {
     const { value } = evt.target;
     setSearchData(value);
+    // Bhavana's search logic
+    setSearchTerm(evt.target.value);
+    // Bhavana's search logic
   };
+  // Bhavana's search logic
+  const filteredData = projectDetails.filter((project) => {
+    return project.projectName.toLowerCase().includes(searchTerm.toLowerCase());
+    //  ||
+    // project.requiredStack.toLowerCase().includes(searchTerm.toLowerCase())
+  });
+  console.log(filteredData);
+  // Bhavana's search logic
 
   useEffect(() => {
     if (searching) {
@@ -121,9 +139,24 @@ function Explore() {
 
   return (
     <>
-      <h1>we r in explore</h1>
-      <div>
-        {searching ? (
+      <div className="vh-100 d-flex justify-content-center align-items-center flex-column">
+        <div className="d-flex justify-content-center align-items-center flex-column mb-5">
+          <h2>Explore More </h2>
+          <Form.Control
+            type="text"
+            placeholder="seach here"
+            value={searchData}
+            onChange={handleChange}
+            // className="w-50"
+          />
+          {/* <button onClick={handleClickSearch}>Search</button> */}
+        </div>
+        <div className="d-flex justify-content-center align-items-center gap-2 m-3">
+          <RandomCard ourProp={filteredData} />
+        </div>
+      </div>
+
+      {/* {searching ? (
           <DisplayData prop1={projectDetails} prop2={my_list} />
         ) : (
           <>
@@ -132,23 +165,19 @@ function Explore() {
               <input
                 type="text"
                 id="input-type"
-                value={searchData}
-                onChange={handleChange}
+               
               />
               <button onClick={handleClickSearch}>Search</button>
-            </div>
-            {/* make the necessary changes here like if user is manager then random employees should be displayed, if the user is employee then random mangers should be dispalyed  */}
-
-            <>
-              {console.log(isManager)}
-              <RandomCard ourProp={projectDetails} />
-            </>
-          </>
+            </div> */}
+      {/* make the necessary changes here like if user is manager then random employees should be displayed, if the user is employee then random mangers should be dispalyed  */}
+      {/* </>
         )}
-      </div>
+          </div>*/}
     </>
   );
-  //here we need to types of data one is to display random data when the user yet to start the searching process and the other is the data with the details which user is searched
+  {
+    /* //here we need to types of data one is to display random data when the user yet to start the searching process and the other is the data with the details which user is searched */
+  }
 }
 
 export default Explore;

@@ -1,8 +1,15 @@
 import React from "react";
 import { OurAnswer } from "../managerContext";
 import { useState, useEffect } from "react";
+import { useFetch } from "./useFetch";
 
-export default function MangCard() {
+import { Button, Card, Container, Modal } from "react-bootstrap";
+// import { log } from "console";
+import "../styles/ManagerDashBoard.css";
+import employeeImage from "../assets/woman2.png";
+import { Link } from "react-router-dom";
+export default function MangCard(props) {
+  const { prop } = props;
   const [projectDetails, setprojectDetails] = useState([]);
   const [empDetails, setEmpDetails] = useState([]);
   let { userIdContext } = OurAnswer();
@@ -10,18 +17,11 @@ export default function MangCard() {
   const [upVotes, setUpVotes] = useState(0);
   const demoUSerID = userIdContext;
   console.log("demo", typeof demoUSerID);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/getEmps") //employee details
-      .then((response) => response.json())
-      .then((data) => {
-        setEmpDetails(data);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching user data:", error);
-      });
-  }, [upVotes]);
+  console.log(demoUSerID);
+  console.log(props);
+  // const { isLoading, data, apiError } = useFetch(
+  //   "http://localhost:3000/getEmps"
+  // );
 
   //button handling function
   const upvoteClick = (userId, userIdoContext) => {
@@ -83,7 +83,7 @@ export default function MangCard() {
 
   useEffect(() => {
     // Fetching the data weter user is manager or employee user data from the server
-    fetch("http://localhost:3000/getEmps") //employee details
+    fetch("http://localhost:3000/getEmps") // got the details of manager
       .then((response) => response.json())
       .then((data) => {
         setEmpDetails(data);
@@ -108,9 +108,13 @@ export default function MangCard() {
   }, []);
 
   const matchingEmps = [];
+  console.log(userIdContext);
   empDetails.forEach((emp) => {
+    // console.log(emp);
     const isEligible = projectDetails.some((pro) => {
+      // console.log(pro);
       if (pro.id === userIdContext) {
+        console.log("verified");
         return pro.requiredStack.some((e) => emp.techStack.includes(e));
       }
       return false; // Return false if the pro.id does not match userIdContext
@@ -128,14 +132,69 @@ export default function MangCard() {
     }
   });
 
+  // for  modal
+  const [show, setShow] = useState(false);
+  const [selectedEmployee, setSelectedEmployee] = useState([]);
+  const handleClose = () => setShow(false);
+  const handleShow = (empId) => {
+    console.log(empId);
+    setShow(true);
+    setSelectedEmployee(empDetails.filter((employee) => employee.id === empId));
+    console.log(selectedEmployee);
+  };
   return (
     <>
       {emptyFlag ? (
         <managerUpdateStack />
       ) : (
         <>
-          we r in Manager card and here are some profiles for your project
-          {matchingEmps.map((man, index) => {
+          <div className="vh-100 d-flex justify-content-center align-items-center flex-column">
+            <div className="d-flex justify-content-center align-items-center flex-column mb-5">
+              <h2>Welcome Managername, </h2>
+              <p>
+                Check out the employee profiles that is best match for your
+                requirement
+              </p>
+            </div>
+            <div className="d-flex justify-content-center align-items-center gap-2 m-3">
+              {empDetails.slice(0, 4).map((employee) => (
+                <Card
+                  style={{ width: "18rem" }}
+                  onClick={() => handleShow(employee.id)}
+                  className="cursor-pointer"
+                >
+                  <Card.Img
+                    variant=""
+                    src={employee.gender === "Female" ? employeeImage : null}
+                  />
+                  <Card.Body>
+                    <Card.Title>{employee.name}</Card.Title>
+                    <span> {employee.techStack.map((tech) => tech)}</span>
+                  </Card.Body>
+                </Card>
+              ))}
+            </div>
+            <div className="mt-5">
+              <Link to="/mexplore">Explore More..</Link>
+            </div>
+          </div>
+          {selectedEmployee.map((selectedEmployee) => (
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>{selectedEmployee.name}</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>{selectedEmployee.jobDescription}</Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          ))}
+          {/* {matchingEmps.map((man, index) => {
             // Use `find()` instead of `map()` to find the matching employee
             const emp = empDetails.find((emp) => emp.id === man);
             // Check if the employee exists
@@ -164,7 +223,7 @@ export default function MangCard() {
             } else {
               return null; // Return null if no employee found
             }
-          })}
+          })} */}
         </>
       )}
     </>

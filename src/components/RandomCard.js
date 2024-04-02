@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { Button, Card, Container, Modal } from "react-bootstrap";
+import "../styles/ManagerDashBoard.css";
 
 export default function RandomCard(props) {
   const { ourProp } = props;
@@ -37,22 +39,67 @@ export default function RandomCard(props) {
   };
   const ans = randomCandi(ourMin, ourMax, ourLen, ourProp);
   console.log(ans);
+  const [show, setShow] = useState(false);
+  const [selectedProject, setSelectedProject] = useState([]);
+  const handleClose = () => setShow(false);
+  const handleShow = (projectId) => {
+    console.log(projectId);
+    setShow(true);
+    setSelectedProject(
+      props.ourProp.filter((project) => project.id === projectId)
+    );
+    console.log(selectedProject);
+  };
   return (
     <>
-      <div className="card-component">
+      <div className="d-flex justify-content-center align-items-center gap-2 m-3">
+        {props.ourProp.map((project) => (
+          <Card
+            style={{ width: "18rem" }}
+            onClick={() => handleShow(project.id)}
+            className="cursor-pointer"
+          >
+            {/* <Card.Img variant="" src={employeeImage} /> */}
+            <Card.Body>
+              <Card.Title>{project.projectName}</Card.Title>
+              <span>{project.nameOfManager}</span>
+              <span> {project.requiredStack.map((tech) => tech)}</span>
+            </Card.Body>
+          </Card>
+        ))}
+      </div>
+      {/* //for modal on click on card */}
+      {selectedProject.map((selectedProject) => (
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>{selectedProject.projectName}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>{selectedProject.projectDescription}</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      ))}
+
+      {/* <div className="card-component">
         {ans.map((our, index) => (
           <div className="card" key={index}>
             <div className="card-content">
               <h2>Project: {our.projectName}</h2>
               <p>Manager: {our.nameOfManager}</p>
-              {/* <button onClick={handleUpVote}>Upvote</button> it is just demo we need this feature perfect on employee cards */}
-              <p>Required Skill:{our.requiredStack.join(", ")}</p>
+              <button onClick={handleUpVote}>Upvote</button> it is just demo we need this feature perfect on employee cards */}
+      {/* <p>Required Skill:{our.requiredStack.join(", ")}</p>
             </div>
           </div>
           // <div className="card" key={index}>
           // <div className = "card-content">
-        ))}
-      </div>
+        ))} */}
+      {/* </div> */}
     </>
 
     // <div>

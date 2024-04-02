@@ -2,20 +2,19 @@ import React from "react";
 import MangCard from "./MangCard";
 import { OurAnswer } from "../managerContext";
 import { Link } from "react-router-dom";
-
+import "../styles/ManagerDashBoard.css";
 function ManagerDashBoard() {
   let { isManager } = OurAnswer();
   const { userIdContext } = OurAnswer();
-  console.log("we r in manager and printn the state of user", { isManager });
-  console.log("printing userId in MangerDashboard", userIdContext);
+
   return (
-    <>
-      <Link to="/mexplore">explore</Link>
-      <Link to="contactus">Conatct us</Link>
-      <Link to="profile">Profile</Link>
-      <div>this is your place to find the best profiles</div>;
-      <MangCard />
-    </>
+    <div className="manager-dashboard">
+      {/* <Link to="/mexplore">explore</Link> */}
+      {/* <Link to="contactus">Conatct us</Link>
+      // <Link to="profile">Profile</Link> */}
+      {/* <div>this is your place to find the best profiles</div>; */}
+      <MangCard prop={userIdContext} />
+    </div>
   );
 }
 

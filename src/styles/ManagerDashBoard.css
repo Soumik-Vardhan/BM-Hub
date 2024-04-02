@@ -1,0 +1,43 @@
+.manager-dashboard {
+  height: 100vh !important;
+  background-color: #0000cd !important;
+}
+.employee-dashboard {
+  height: 100vh !important;
+  background-color: #f9a826 !important;
+}
+.manager-dashboard h2 {
+  color: #f9a826 !important;
+}
+.manager-dashboard p {
+  color: white !important;
+}
+.manager-dashboard a {
+  color: #f9a826 !important;
+  font-size: 1.2rem !important;
+  text-decoration: none;
+}
+.card {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  /* position: relative; */
+  /* height: 40vh !important; */
+}
+.card-body {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+}
+.card-img {
+  width: 5rem !important;
+  height: 5rem !important;
+  margin-top: 10% !important;
+  /* position: absolute !important;
+top:20% !important;
+left: 50% !important; */
+  /* display: flex !important;
+align-items: center !important;
+justify-content: center !important; */
+}

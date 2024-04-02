@@ -1,0 +1,18 @@
+.navBar {
+  background: none !important;
+  height: 9vh;
+  margin-top: 0.9em !important;
+  /* position: fixed; */
+  /* background: transparent !important; */
+}
+.navbar-brand {
+  color: #0000cd !important;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.nav-link {
+  color: #f9a826 !important;
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+  font-weight: bold !important;
+}
